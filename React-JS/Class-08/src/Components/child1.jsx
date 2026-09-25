@@ -1,9 +1,13 @@
-import React from 'react'
+import {React , useEffect} from "react";
 
-const Child1 = () => {
-  return (
-    <h1>Child1</h1>
-  )
-}
+const Child1 = ({getData}) => {
+  useEffect(() => {
+    console.log("Child1 Mount");
+    return () => {
+getData()
+    };
+  }, []);
+  return <h1>Child 1</h1>;
+};
 
-export default Child1
+export default Child1;

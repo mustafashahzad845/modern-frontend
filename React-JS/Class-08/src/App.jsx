@@ -8,13 +8,7 @@ const App = () => {
   // const [userName , setUserName] = useState("Mustafa")
   const [isDarkTheme , setIsDarkTheme] = useState(false)
   // const [counter , setCounter] = useState(0)
-  
-useEffect(
-  ()=>{
-    getData()
-  } 
-)
-
+  const [isFirstChild , setIsFirstChild] = useState(false)
   // const changeUserName = ()=>{
   //   setUserName("Mustafa Shahzad")
   // }
@@ -22,6 +16,13 @@ useEffect(
     console.log("Api Response");
     
   }
+  // useEffect(
+  //   ()=>{
+  //     getData()
+  //   } , [isFirstChild]
+  // )
+
+
   // const counterHandler = ()=>{
   //   setCounter(counter+1)
   // }
@@ -42,8 +43,17 @@ useEffect(
   //   </div>
 
   <div>
-    <Child1 />
-    <Child2 />
+    {
+    isFirstChild ? <Child1 getData={getData} /> :  <Child2 />
+    }
+
+    <button onClick={
+  ()=>{
+    setIsFirstChild(!isFirstChild)
+    console.log(isFirstChild , "isFirstChild");
+    
+  }
+}>Change Child</button>
   </div>
   )
 }
